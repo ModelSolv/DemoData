@@ -4,7 +4,7 @@ zenModel TaxBlaster
 	
 		structure TaxFiling
 			filingID : long
-			taxpayer : reference to Person inverse taxFilings
+			taxpayer : reference to Person
 			jurisdiction : string
 			year : int
 			period : int
@@ -15,7 +15,7 @@ zenModel TaxBlaster
 
 		structure Person
 			taxpayerID : long
-			ssn: SocialSecurityNumber
+			ssn: string
 			lastName : string
 			firstName : string
 			otherNames : string*
@@ -23,7 +23,7 @@ zenModel TaxBlaster
 			netWorthSpecialValue : string
 			preferredLanguage : string
 			DOB : string
-			taxFilings : reference to TaxFiling* inverse taxpayer
+			taxFilings : reference to TaxFiling*
 			addresses : containing Address*
 			
 		structure Address
@@ -34,4 +34,3 @@ zenModel TaxBlaster
 			postalCode : string
 			country : string
 
-		simpleType SocialSecurityNumber defined as string
