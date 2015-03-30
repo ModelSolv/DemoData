@@ -1,0 +1,37 @@
+zenModel TaxBlaster
+
+	dataModel DataModel
+	
+		structure TaxFiling
+			filingID : long
+			taxpayer : reference to Person inverse taxFilings
+			jurisdiction : string
+			year : int
+			period : int
+			currency : string
+			grossIncome : decimal
+			taxLiability : decimal
+			status : string
+
+		structure Person
+			taxpayerID : long
+			ssn: SocialSecurityNumber
+			lastName : string
+			firstName : string
+			otherNames : string*
+			netWorth : decimal
+			netWorthSpecialValue : string
+			preferredLanguage : string
+			DOB : string
+			taxFilings : reference to TaxFiling* inverse taxpayer
+			addresses : containing Address*
+			
+		structure Address
+			street1 : string
+			street2 : string
+			city : string
+			stateOrProvince : string
+			postalCode : string
+			country : string
+
+		simpleType SocialSecurityNumber defined as string
